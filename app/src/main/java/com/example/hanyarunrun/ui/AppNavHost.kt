@@ -9,22 +9,33 @@ import androidx.navigation.navArgument
 import com.example.hanyarunrun.viewmodel.DataViewModel
 
 @Composable
-fun AppNavHost(viewModel: DataViewModel) {
+fun AppNavHost(dataViewModel: DataViewModel) {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "form") {
-        composable("form") {
-            DataEntryScreen(navController = navController, viewModel = viewModel)
+    NavHost(navController = navController, startDestination = "dashboard") {
+        composable("dashboard") {
+            DashboardScreen(navController = navController)
         }
+
+        composable("entry") {
+            DataEntryScreen(navController = navController, viewModel = dataViewModel)
+        }
+
         composable("list") {
-            DataListScreen(navController = navController, viewModel = viewModel)
+            DataListScreen(navController = navController, viewModel = dataViewModel)
         }
+
         composable(
             route = "edit/{id}",
             arguments = listOf(navArgument("id") { type = NavType.IntType })
         ) { backStackEntry ->
             val id = backStackEntry.arguments?.getInt("id") ?: 0
-            EditScreen(navController = navController, viewModel = viewModel, dataId = id)
+            EditScreen(navController = navController, viewModel = dataViewModel, dataId = id)
+        }
+
+        // Tetap tambahkan navigasi ke halaman Profil agar bisa diakses
+        composable("profile") {
+            ProfileScreen(navController = navController)
         }
     }
 }

@@ -15,6 +15,9 @@ interface DataDao {
     @Query("SELECT * FROM data_table ORDER BY id DESC")
     fun getAll(): LiveData<List<DataEntity>>
 
+    @Query("SELECT * FROM data_table ORDER BY id DESC")
+    suspend fun getAllSync(): List<DataEntity> // Tambahkan ini
+
     @Query("SELECT * FROM data_table WHERE id = :dataId")
     suspend fun getById(dataId: Int): DataEntity?
 
