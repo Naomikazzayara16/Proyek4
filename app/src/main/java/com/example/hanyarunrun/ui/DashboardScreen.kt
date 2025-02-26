@@ -3,20 +3,31 @@ package com.example.hanyarunrun.ui
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.hanyarunrun.viewmodel.DataViewModel
 
 @Composable
-fun DashboardScreen(navController: NavHostController) {
+fun DashboardScreen(navController: NavHostController, dataViewModel: DataViewModel) {
+    val dataList by dataViewModel.dataList.observeAsState(emptyList())
+
+    val totalData = dataList.size
+    val totalKonsumsi = dataList.sumOf { it.total }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -26,39 +37,76 @@ fun DashboardScreen(navController: NavHostController) {
                 )
             )
             .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
     ) {
-        // Header Profil
-        Text(
-            text = "Selamat Datang di GODAT!",
-            style = MaterialTheme.typography.headlineMedium,
-            fontWeight = FontWeight.Bold,
-            color = Color.White
-        )
-        Text(
-            text = "Aplikasi Data Statistik",
-            fontSize = 18.sp,
-            color = Color(0xFFE0E0E0)
-        )
-        Spacer(modifier = Modifier.height(32.dp))
+        // 🔹 Header Dashboard
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = "Selamat Datang di GODAT!",
+                style = MaterialTheme.typography.headlineMedium,
+                color = Color.White,
+                fontWeight = FontWeight.Bold
+            )
+            Row {
+                IconButton(onClick = { /* TODO: Notifikasi */ }) {
+                    Icon(Icons.Default.Notifications, contentDescription = "Notifikasi", tint = Color.White)
+                }
+                IconButton(onClick = { navController.navigate("profile") }) {
+                    Icon(Icons.Default.Person, contentDescription = "Profil", tint = Color.White)
+                }
+            }
+        }
 
-        // Grid Menu dengan 3 Susunan ke Bawah
-        DashboardCard("📊 Input Data", Color(0xFF4CAF50)) { navController.navigate("entry") }
-        DashboardCard("📂 Lihat Data", Color(0xFFFF9800)) { navController.navigate("list") }
-        DashboardCard("👤 Profil", Color(0xFF2196F3)) { navController.navigate("profile") }
+        // 🔹 Ringkasan Data
+        Spacer(modifier = Modifier.height(16.dp))
+        Card(
+            shape = RoundedCornerShape(12.dp),
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(containerColor = Color.White)
+        ) {
+            Column(
+                modifier = Modifier.padding(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(text = "Total Konsumsi Gula", fontSize = 18.sp, color = Color.Black)
+                Text(text = "$totalKonsumsi Ton", fontSize = 22.sp, fontWeight = FontWeight.Bold)
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(text = "Total Data: $totalData", fontSize = 16.sp, color = Color.Gray)
+            }
+        }
+
+        // 🔹 Navigasi Menu (Menggunakan Grid Layout)
+        Spacer(modifier = Modifier.height(24.dp))
+        Column {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                DashboardButton("📂 Lihat Data", Color(0xFFFF9800)) { navController.navigate("list") }
+                DashboardButton("➕ Input Data", Color(0xFF4CAF50)) { navController.navigate("entry") }
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                DashboardButton("📊 Analisis Data", Color(0xFF2196F3)) { /* TODO: Halaman Analisis */ }
+                DashboardButton("📰 Berita", Color(0xFFE91E63)) { /* TODO: Halaman Berita */ }
+            }
+        }
     }
 }
 
+// 🔹 Tombol Dashboard Berbentuk Kartu
 @Composable
-fun DashboardCard(title: String, color: Color, onClick: () -> Unit) {
+fun DashboardButton(title: String, color: Color, onClick: () -> Unit) {
     Card(
-        shape = RoundedCornerShape(16.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 10.dp),
+        shape = RoundedCornerShape(12.dp),
         modifier = Modifier
-            .fillMaxWidth()
-            .height(80.dp)
-            .padding(vertical = 8.dp)
+            .size(150.dp, 80.dp)
             .clickable(onClick = onClick),
         colors = CardDefaults.cardColors(containerColor = color)
     ) {
@@ -68,7 +116,7 @@ fun DashboardCard(title: String, color: Color, onClick: () -> Unit) {
         ) {
             Text(
                 text = title,
-                fontSize = 18.sp,
+                fontSize = 16.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.White
             )

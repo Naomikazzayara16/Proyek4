@@ -1,41 +1,38 @@
 package com.example.hanyarunrun.ui
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.hanyarunrun.viewmodel.DataViewModel
+import com.example.hanyarunrun.viewmodel.ProfileViewModel
 
 @Composable
-fun AppNavHost(dataViewModel: DataViewModel) {
-    val navController = rememberNavController()
-
+fun AppNavHost(
+    navController: NavHostController,
+    dataViewModel: DataViewModel,
+    profileViewModel: ProfileViewModel
+) {
     NavHost(navController = navController, startDestination = "dashboard") {
         composable("dashboard") {
-            DashboardScreen(navController = navController)
+            DashboardScreen(navController = navController, dataViewModel = dataViewModel)
         }
-
-        composable("entry") {
-            DataEntryScreen(navController = navController, viewModel = dataViewModel)
-        }
-
         composable("list") {
             DataListScreen(navController = navController, viewModel = dataViewModel)
         }
-
-        composable(
-            route = "edit/{id}",
-            arguments = listOf(navArgument("id") { type = NavType.IntType })
-        ) { backStackEntry ->
-            val id = backStackEntry.arguments?.getInt("id") ?: 0
-            EditScreen(navController = navController, viewModel = dataViewModel, dataId = id)
-        }
-
-        // Tetap tambahkan navigasi ke halaman Profil agar bisa diakses
         composable("profile") {
-            ProfileScreen(navController = navController)
+            ProfileScreen(navController = navController, viewModel = profileViewModel)
+        }
+        composable("entry") {
+            DataEntryScreen(navController = navController, viewModel = dataViewModel)
+        }
+        composable("analysis") {
+            AnalysisScreen(navController = navController, viewModel = dataViewModel) // 🔹 Halaman Analisis
+        }
+        composable("news") {
+            NewsScreen(navController = navController) // 🔹 Halaman Berita
         }
     }
 }

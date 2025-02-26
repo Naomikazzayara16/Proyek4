@@ -11,23 +11,23 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
+import com.example.hanyarunrun.viewmodel.DataViewModel
+import com.example.hanyarunrun.viewmodel.ProfileViewModel
 
 @Composable
-fun MainScreen() {
-    val navController = rememberNavController()
-
+fun MainScreen(
+    navController: NavHostController,
+    dataViewModel: DataViewModel,
+    profileViewModel: ProfileViewModel
+) {
     Scaffold(
         bottomBar = { CustomBottomNav(navController) }
     ) { innerPadding ->
-        NavHost(
+        AppNavHost(
             navController = navController,
-            startDestination = "keranjang",
-            modifier = Modifier.padding(innerPadding)
-        ) {
-            composable("dashboard") { DashboardScreen(navController) }
-            composable("keranjang") { KeranjangScreen(navController) }
-            composable("profile") { ProfileScreen(navController) } // Hapus parameter ProfileViewModel
-        }
+            dataViewModel = dataViewModel,
+            profileViewModel = profileViewModel
+        ) // ✅ Memastikan parameter diteruskan dengan benar
     }
 }
 

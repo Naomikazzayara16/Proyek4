@@ -5,9 +5,10 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "profile_table")
 data class ProfileEntity(
-    @PrimaryKey val id: Int = 1,
-    val nama: String,
-    val email: String,
-    val nomorTelepon: String,
-    val fotoUri: String?
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
+    val nama: String = "",
+    val email: String = "",
+    val nomorTelepon: String = "",
+    val fotoUri: String? = null // Default null agar tidak error jika kosong
 )

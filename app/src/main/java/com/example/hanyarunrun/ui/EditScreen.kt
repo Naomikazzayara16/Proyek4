@@ -25,6 +25,7 @@ fun EditScreen(
     dataId: Int
 ) {
     val context = LocalContext.current
+    var showDialog by remember { mutableStateOf(false) } // 🔹 State untuk dialog konfirmasi hapus
 
     var kodeProvinsi by remember { mutableStateOf("") }
     var namaProvinsi by remember { mutableStateOf("") }
@@ -46,88 +47,68 @@ fun EditScreen(
         }
     }
 
-    Surface(
-        modifier = Modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background
+    Column(
+        modifier = Modifier.fillMaxSize().padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState())
-                .padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+        Text(text = "Edit Data", style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold)
+        OutlinedTextField(value = total, onValueChange = { total = it }, label = { Text("Total") }, keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number), modifier = Modifier.fillMaxWidth())
+        OutlinedTextField(value = satuan, onValueChange = { satuan = it }, label = { Text("Satuan") }, modifier = Modifier.fillMaxWidth())
+        OutlinedTextField(value = tahun, onValueChange = { tahun = it }, label = { Text("Tahun") }, keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number), modifier = Modifier.fillMaxWidth())
+
+        Button(
+            onClick = {
+                val updatedData = DataEntity(
+                    id = dataId,
+                    kodeProvinsi = kodeProvinsi,
+                    namaProvinsi = namaProvinsi,
+                    kodeKabupatenKota = kodeKabupatenKota,
+                    namaKabupatenKota = namaKabupatenKota,
+                    total = total.toDoubleOrNull() ?: 0.0,
+                    satuan = satuan,
+                    tahun = tahun.toIntOrNull() ?: 0
+                )
+                viewModel.updateData(updatedData)
+                Toast.makeText(context, "Data berhasil diperbarui!", Toast.LENGTH_SHORT).show()
+                navController.popBackStack()
+            },
+            modifier = Modifier.fillMaxWidth()
         ) {
-            Text(
-                text = "Edit Data",
-                style = MaterialTheme.typography.headlineMedium,
-                fontWeight = FontWeight.Bold
-            )
-            OutlinedTextField(
-                value = kodeProvinsi,
-                onValueChange = { kodeProvinsi = it },
-                label = { Text("Kode Provinsi") },
-                modifier = Modifier.fillMaxWidth()
-            )
-            OutlinedTextField(
-                value = namaProvinsi,
-                onValueChange = { namaProvinsi = it },
-                label = { Text("Nama Provinsi") },
-                modifier = Modifier.fillMaxWidth()
-            )
-            OutlinedTextField(
-                value = kodeKabupatenKota,
-                onValueChange = { kodeKabupatenKota = it },
-                label = { Text("Kode Kabupaten/Kota") },
-                modifier = Modifier.fillMaxWidth()
-            )
-            OutlinedTextField(
-                value = namaKabupatenKota,
-                onValueChange = { namaKabupatenKota = it },
-                label = { Text("Nama Kabupaten/Kota") },
-                modifier = Modifier.fillMaxWidth()
-            )
-            OutlinedTextField(
-                value = total,
-                onValueChange = { total = it },
-                label = { Text("Total") },
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                modifier = Modifier.fillMaxWidth()
-            )
-            OutlinedTextField(
-                value = satuan,
-                onValueChange = { satuan = it },
-                label = { Text("Satuan") },
-                modifier = Modifier.fillMaxWidth()
-            )
-            OutlinedTextField(
-                value = tahun,
-                onValueChange = { tahun = it },
-                label = { Text("Tahun") },
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                modifier = Modifier.fillMaxWidth()
-            )
-            Spacer(modifier = Modifier.height(24.dp))
-            Button(
-                onClick = {
-                    val updatedData = DataEntity(
-                        id = dataId,
-                        kodeProvinsi = kodeProvinsi,
-                        namaProvinsi = namaProvinsi,
-                        kodeKabupatenKota = kodeKabupatenKota,
-                        namaKabupatenKota = namaKabupatenKota,
-                        total = total.toDoubleOrNull() ?: 0.0,
-                        satuan = satuan,
-                        tahun = tahun.toIntOrNull() ?: 0
-                    )
-                    viewModel.updateData(updatedData)
-                    Toast.makeText(context, "Data berhasil diupdate!", Toast.LENGTH_SHORT).show()
-                    navController.popBackStack()
+            Text("Update Data")
+        }
+
+        // 🔹 Tombol Hapus dengan Konfirmasi Dialog
+        Button(
+            onClick = { showDialog = true },
+            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.error),
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("Hapus Data")
+        }
+
+        if (showDialog) {
+            AlertDialog(
+                onDismissRequest = { showDialog = false },
+                title = { Text("Konfirmasi Hapus") },
+                text = { Text("Apakah Anda yakin ingin menghapus data ini?") },
+                confirmButton = {
+                    Button(
+                        onClick = {
+                            viewModel.deleteDataById(dataId)
+                            Toast.makeText(context, "Data berhasil dihapus!", Toast.LENGTH_SHORT).show()
+                            showDialog = false
+                            navController.popBackStack()
+                        }
+                    ) {
+                        Text("Ya, Hapus")
+                    }
                 },
-                shape = RoundedCornerShape(8.dp),
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text(text = "Update Data")
-            }
+                dismissButton = {
+                    Button(onClick = { showDialog = false }) {
+                        Text("Batal")
+                    }
+                }
+            )
         }
     }
 }

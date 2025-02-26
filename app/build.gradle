@@ -39,42 +39,56 @@ android {
 
 dependencies {
 
-    // Core libraries
+    // ✅ Core libraries
     implementation libs.androidx.core.ktx.v1101
     implementation libs.androidx.lifecycle.runtime.ktx.v261
     implementation libs.androidx.activity.compose.v172
 
-    // Jetpack Compose & Material3
+    // ✅ Jetpack Compose & Material3
     implementation libs.ui
     implementation libs.material3
     implementation libs.ui.tooling.preview
     implementation libs.androidx.runtime.livedata
     debugImplementation libs.ui.tooling
+    implementation 'androidx.lifecycle:lifecycle-runtime-compose:2.6.1' // Untuk collectAsStateWithLifecycle()
+    implementation 'com.github.tehras:charts:0.2.4' // Untuk grafik BarChart
 
-    // Navigation Compose
+
+    // ✅ Navigation Compose
     implementation libs.androidx.navigation.compose
 
-    // Coil untuk memuat gambar
+    // ✅ Coil untuk memuat gambar
     implementation("io.coil-kt:coil-compose:2.4.0")
 
-    // Jetpack Compose UI
+    // ✅ Jetpack Compose UI
     implementation("androidx.compose.ui:ui:1.5.4")
     implementation("androidx.compose.foundation:foundation:1.5.4")
 
-    // Material3 untuk Jetpack Compose
+    // ✅ Material3 untuk Jetpack Compose
     implementation("androidx.compose.material3:material3:1.1.2")
 
-    // Compose Runtime
+    // ✅ Compose Runtime
     implementation("androidx.compose.runtime:runtime:1.5.4")
 
-    // Compose Material (Opsional, jika Material3 tidak cukup)
+    // ✅ Compose Material (Opsional, jika Material3 tidak cukup)
     implementation("androidx.compose.material:material:1.5.4")
 
-    // KeyboardOptions (untuk menangani input keyboard)
+    // ✅ KeyboardOptions (untuk menangani input keyboard)
     implementation("androidx.compose.ui:ui-text:1.5.4")
 
-    // Room Database
+    // ✅ Room Database
     implementation libs.androidx.room.runtime
     ksp libs.androidx.room.compiler
     implementation libs.androidx.room.ktx
+
+    // ✅ Tambahkan Dependency untuk Crop Foto (Versi Stabil 4.3.2)
+    implementation("com.github.CanHub:Android-Image-Cropper:4.3.2")
+
+    // ✅ Unit Testing (JUnit 4)
+    testImplementation 'junit:junit:4.13.2'
+    implementation 'androidx.lifecycle:lifecycle-runtime-compose:2.6.1' // Untuk collectAsStateWithLifecycle()
+    implementation 'com.github.tehras:charts:0.2.4' // Untuk grafik BarChart
+    // ✅ Android Instrumentation Test
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
