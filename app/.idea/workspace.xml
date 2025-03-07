@@ -5,33 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b76cca33-7e51-4f2d-9e11-1cb8f4660b7c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/hanyarunrun/ui/AnalysisScreen.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/hanyarunrun/ui/NewScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/deploymentTargetSelector.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proguard-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/proguard-rules.pro" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hanyarunrun/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hanyarunrun/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hanyarunrun/data/AppDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hanyarunrun/data/AppDatabase.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hanyarunrun/data/ProfileDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hanyarunrun/data/ProfileDao.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hanyarunrun/data/ProfileEntity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hanyarunrun/data/ProfileEntity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hanyarunrun/ui/AppNavHost.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hanyarunrun/ui/AppNavHost.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hanyarunrun/ui/DashboardScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hanyarunrun/ui/DashboardScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hanyarunrun/ui/EditScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hanyarunrun/ui/EditScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hanyarunrun/ui/MainScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hanyarunrun/ui/MainScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hanyarunrun/ui/ProfileScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hanyarunrun/ui/ProfileScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hanyarunrun/viewmodel/ProfileViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hanyarunrun/viewmodel/ProfileViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values/colors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values/themes.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/../gradle/libs.versions.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/../gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,27 +20,27 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2tZJ0nKlp1qV3jtFCDLIGz60Nts" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "android.gradle.sync.needed": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/AndroidStudio/contoh-hanyarunrun/app"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;android.gradle.sync.needed&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/AndroidStudio/contoh-hanyarunrun/app&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
